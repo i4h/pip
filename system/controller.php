@@ -62,7 +62,7 @@ class Controller {
 	{
 		global $app;
 		$app['urlManager'] = $this->loadHelper('urlManager');
-
+ 		$app['sessionHelper'] = $this->loadHelper('session_helper');
 		$app['translator'] = $this->loadHelper('translator');
 		$app['themeManager'] = $this->loadHelper('thememanager');
 	}
