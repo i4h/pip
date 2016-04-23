@@ -20,7 +20,17 @@ class Controller {
 	
 	public function loadView($name)
 	{
+		global $app;
+		/* Look for a localized version of view */
+		if (!$app['translator']->isUsingSourceLanguage()) {
+			if (file_exists(APP_DIR .'views/'. $name .'_'.$app['translator']->getLanguage().'.php'))
+				$name = $name.'_'.$app['translator']->getLanguage();
+		}
+
 		$view = new View($name);
+		if (isset($app['translator']))
+			$view->set('t', $app['translator']);
+
 		return $view;
 	}
 	
@@ -46,6 +56,8 @@ class Controller {
 
 	public function beforeAction()
 	{
+		global $app;
+		$app['translator'] = $this->loadHelper('translator');
 	}
 }
 
