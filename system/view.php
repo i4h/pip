@@ -10,9 +10,16 @@ class View {
 		$this->template = APP_DIR .'views/'. $template .'.php';
 	}
 
-	public function set($var, $val)
+	public function set($var, $val = null)
 	{
-		$this->pageVars[$var] = $val;
+
+		if (is_array($var)) {
+			foreach($var as $name=>$val)
+				$this->pageVars[$name] = $val;
+		} else if ($val === null)
+			throw new Exception("View::set called without array and without val");
+		else
+			$this->pageVars[$var] = $val;
 	}
 
 	public function render()
