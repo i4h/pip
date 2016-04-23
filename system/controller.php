@@ -32,6 +32,8 @@ class Controller {
 			$view->set('t', $app['translator']);
 		if (isset($app['themeManager']))
 			$view->set('tm', $app['themeManager']);
+		if (isset($app['urlManager']))
+			$view->set('um', $app['urlManager']);
 
 		return $view;
 	}
@@ -59,6 +61,8 @@ class Controller {
 	public function beforeAction()
 	{
 		global $app;
+		$app['urlManager'] = $this->loadHelper('urlManager');
+
 		$app['translator'] = $this->loadHelper('translator');
 		$app['themeManager'] = $this->loadHelper('thememanager');
 	}
