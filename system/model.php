@@ -24,7 +24,7 @@ class Model {
 
 	public function escapeString($string)
 	{
-		return mysql_real_escape_string($string);
+		return mysqli_real_escape_string($this->connection, $string);
 	}
 
 	public function escapeArray($array)
