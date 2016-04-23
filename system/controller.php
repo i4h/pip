@@ -13,6 +13,11 @@ class Controller {
 		return $model;
 	}
 	
+	public static function loadModelStatic($name)
+	{
+		require_once(APP_DIR .'models/'. strtolower($name) .'.php');
+	}	
+	
 	public function loadView($name)
 	{
 		$view = new View($name);
