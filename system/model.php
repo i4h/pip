@@ -9,8 +9,11 @@ class Model {
 	{
 		global $config;
 		
-		$this->connection = mysql_pconnect($config['db_host'], $config['db_username'], $config['db_password']) or die('MySQL Error: '. mysql_error());
-		mysql_select_db($config['db_name'], $this->connection);
+		if (!empty($config['db_host']))
+		{
+			$this->connection = mysqli_connect($config['db_host'], $config['db_username'], $config['db_password']) or die('MySQL Error: '. mysql_error());
+			mysqli_select_db($this->connection, $config['db_name']);
+		}
 	}
 
 	public function escapeString($string)
