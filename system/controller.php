@@ -43,6 +43,10 @@ class Controller {
 		header('Location: '. $config['base_url'] . $loc);
 	}
     
+
+	public function beforeAction()
+	{
+	}
 }
 
 ?>
