@@ -30,6 +30,8 @@ class Controller {
 		$view = new View($name);
 		if (isset($app['translator']))
 			$view->set('t', $app['translator']);
+		if (isset($app['themeManager']))
+			$view->set('tm', $app['themeManager']);
 
 		return $view;
 	}
@@ -58,6 +60,7 @@ class Controller {
 	{
 		global $app;
 		$app['translator'] = $this->loadHelper('translator');
+		$app['themeManager'] = $this->loadHelper('thememanager');
 	}
 }
 
