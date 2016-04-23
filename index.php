@@ -10,6 +10,8 @@ session_start();
 define('ROOT_DIR', realpath(dirname(__FILE__)) .'/');
 define('APP_DIR', ROOT_DIR .'application/');
 
+define('ENV_DEBUG', true);
+
 // Includes
 require(APP_DIR .'config/config.php');
 require(ROOT_DIR .'system/model.php');

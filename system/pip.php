@@ -42,8 +42,18 @@ function pip()
 	// Create object and call method
 	$obj = new $controller;
 	$obj->action = isset($segments[1]) ? $segments[1] : "index";	
+
+	if (defined('ENV_DEBUG')) {
 	    call_user_func_array(array($obj, 'beforeAction'), array_slice($segments, 2)); 
 	    call_user_func_array(array($obj, $action), array_slice($segments, 2));
+	} else {
+		try {
+			call_user_func_array(array($obj, 'beforeAction'), array_slice($segments, 2)); 
+			call_user_func_array(array($obj, $action), array_slice($segments, 2));
+		} catch(Exception $e) {
+		throw $e;
+		}
+	}
 }
 
 ?>
