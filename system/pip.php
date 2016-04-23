@@ -6,7 +6,7 @@ function pip()
     
     // Set our defaults
     $controller = $config['default_controller'];
-    $action = 'index';
+    $action = 'actionIndex';
     $url = '';
 	
 	// Get request url and script url
@@ -21,7 +21,7 @@ function pip()
 	
 	// Do our default checks
 	if(isset($segments[0]) && $segments[0] != '') $controller = $segments[0];
-	if(isset($segments[1]) && $segments[1] != '') $action = $segments[1];
+	if(isset($segments[1]) && $segments[1] != '') $action = 'action'.ucfirst($segments[1]);
 
 	// Get our controller file
     $path = APP_DIR . 'controllers/' . $controller . '.php';
