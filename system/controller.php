@@ -9,6 +9,7 @@ class Controller {
 		require_once(APP_DIR .'models/'. strtolower($name) .'.php');
 
 		$model = new $name;
+		$model->controller = $this;
 		return $model;
 	}
 	

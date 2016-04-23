@@ -3,6 +3,7 @@
 class Model {
 
 	private $connection;
+	public $controller;
 
 	public function __construct()
 	{
