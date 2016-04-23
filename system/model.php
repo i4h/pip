@@ -16,6 +16,12 @@ class Model {
 		}
 	}
 
+	public function configure($config) {
+		foreach ( $config as $key => $value ) {
+			$this->$key = $value;
+		}
+	}
+
 	public function escapeString($string)
 	{
 		return mysql_real_escape_string($string);
