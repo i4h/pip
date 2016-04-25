@@ -2,6 +2,8 @@
 
 class Controller {
 	
+	public $action;
+	
 	public function loadModel($name)
 	{
 		require(APP_DIR .'models/'. strtolower($name) .'.php');
